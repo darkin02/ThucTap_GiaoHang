@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="88bf1cb4-af87-4596-bf05-57c470eab53c" SharePointProductVersion="15.0">
+  <Assemblies>
+    <Assembly Location="GiaoHang.dll" DeploymentTarget="GlobalAssemblyCache">
+      <SafeControls>
+        <SafeControl Assembly="GiaoHang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=59807118937af65a" Namespace="GiaoHang.VisualWebPart1" TypeName="*" />
+        <SafeControl Assembly="GiaoHang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=59807118937af65a" Namespace="GiaoHang.Create_HangHoa" TypeName="*" />
+        <SafeControl Assembly="GiaoHang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=59807118937af65a" Namespace="GiaoHang.Table_HangHoa" TypeName="*" />
+      </SafeControls>
+    </Assembly>
+  </Assemblies>
+  <TemplateFiles>
+    <TemplateFile Location="CONTROLTEMPLATES\GiaoHang\VisualWebPart1\VisualWebPart1UserControl.ascx" />
+  </TemplateFiles>
+  <FeatureManifests>
+    <FeatureManifest Location="GiaoHang_Feature1\Feature.xml" />
+  </FeatureManifests>
+</Solution>

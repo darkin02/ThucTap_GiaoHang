@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="88bf1cb4-af87-4596-bf05-57c470eab53c" solutionId="88bf1cb4-af87-4596-bf05-57c470eab53c" resetWebServer="false" sharePointProductVersion="15.0" name="GiaoHang" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="f9dea02e-c35c-423c-97f0-03b175dabe39" />
+  </features>
+</package>

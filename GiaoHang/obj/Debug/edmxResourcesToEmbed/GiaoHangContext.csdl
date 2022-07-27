@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GiaoHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HangHoa">
+    <Key>
+      <PropertyRef Name="MaHH" />
+    </Key>
+    <Property Name="MaHH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KG" Type="Int32" Nullable="false" />
+    <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SL" Type="Int32" Nullable="false" />
+    <Property Name="MaLHH" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LoaiHH" Relationship="Self.FK__HangHoa__MaLHH__2C3393D0" FromRole="HangHoa" ToRole="LoaiHH" />
+  </EntityType>
+  <EntityType Name="LoaiHH">
+    <Key>
+      <PropertyRef Name="MaLHH" />
+    </Key>
+    <Property Name="MaLHH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HangHoas" Relationship="Self.FK__HangHoa__MaLHH__2C3393D0" FromRole="LoaiHH" ToRole="HangHoa" />
+  </EntityType>
+  <Association Name="FK__HangHoa__MaLHH__2C3393D0">
+    <End Role="LoaiHH" Type="Self.LoaiHH" Multiplicity="1" />
+    <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiHH">
+        <PropertyRef Name="MaLHH" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="MaLHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GiaoHangEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HangHoas" EntityType="Self.HangHoa" />
+    <EntitySet Name="LoaiHHs" EntityType="Self.LoaiHH" />
+    <AssociationSet Name="FK__HangHoa__MaLHH__2C3393D0" Association="Self.FK__HangHoa__MaLHH__2C3393D0">
+      <End Role="LoaiHH" EntitySet="LoaiHHs" />
+      <End Role="HangHoa" EntitySet="HangHoas" />
+    </AssociationSet>
+    <FunctionImport Name="getNameHangHoa" ReturnType="Collection(GiaoHangModel.getNameHangHoa_Result)">
+      <Parameter Name="TenHH" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="getNameHangHoa_Result">
+    <Property Type="Int32" Name="MaHH" Nullable="false" />
+    <Property Type="String" Name="TenHH" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="KG" Nullable="false" />
+    <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="SL" Nullable="false" />
+    <Property Type="Int32" Name="MaLHH" Nullable="false" />
+  </ComplexType>
+</Schema>

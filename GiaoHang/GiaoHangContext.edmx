@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GiaoHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HangHoa">
+          <Key>
+            <PropertyRef Name="MaHH" />
+          </Key>
+          <Property Name="MaHH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenHH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KG" Type="int" Nullable="false" />
+          <Property Name="Img" Type="image" />
+          <Property Name="SL" Type="int" Nullable="false" />
+          <Property Name="MaLHH" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiHH">
+          <Key>
+            <PropertyRef Name="MaLHH" />
+          </Key>
+          <Property Name="MaLHH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLHH" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__HangHoa__MaLHH__2C3393D0">
+          <End Role="LoaiHH" Type="Self.LoaiHH" Multiplicity="1" />
+          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiHH">
+              <PropertyRef Name="MaLHH" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="MaLHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="getNameHangHoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenHH" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="GiaoHangModelStoreContainer">
+          <EntitySet Name="HangHoa" EntityType="Self.HangHoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiHH" EntityType="Self.LoaiHH" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HangHoa__MaLHH__2C3393D0" Association="Self.FK__HangHoa__MaLHH__2C3393D0">
+            <End Role="LoaiHH" EntitySet="LoaiHH" />
+            <End Role="HangHoa" EntitySet="HangHoa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GiaoHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HangHoa">
+          <Key>
+            <PropertyRef Name="MaHH" />
+          </Key>
+          <Property Name="MaHH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KG" Type="Int32" Nullable="false" />
+          <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SL" Type="Int32" Nullable="false" />
+          <Property Name="MaLHH" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LoaiHH" Relationship="Self.FK__HangHoa__MaLHH__2C3393D0" FromRole="HangHoa" ToRole="LoaiHH" />
+        </EntityType>
+        <EntityType Name="LoaiHH">
+          <Key>
+            <PropertyRef Name="MaLHH" />
+          </Key>
+          <Property Name="MaLHH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HangHoas" Relationship="Self.FK__HangHoa__MaLHH__2C3393D0" FromRole="LoaiHH" ToRole="HangHoa" />
+        </EntityType>
+        <Association Name="FK__HangHoa__MaLHH__2C3393D0">
+          <End Role="LoaiHH" Type="Self.LoaiHH" Multiplicity="1" />
+          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiHH">
+              <PropertyRef Name="MaLHH" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="MaLHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GiaoHangEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HangHoas" EntityType="Self.HangHoa" />
+          <EntitySet Name="LoaiHHs" EntityType="Self.LoaiHH" />
+          <AssociationSet Name="FK__HangHoa__MaLHH__2C3393D0" Association="Self.FK__HangHoa__MaLHH__2C3393D0">
+            <End Role="LoaiHH" EntitySet="LoaiHHs" />
+            <End Role="HangHoa" EntitySet="HangHoas" />
+          </AssociationSet>
+          <FunctionImport Name="getNameHangHoa" ReturnType="Collection(GiaoHangModel.getNameHangHoa_Result)">
+          <Parameter Name="TenHH" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="getNameHangHoa_Result">
+          <Property Type="Int32" Name="MaHH" Nullable="false" />
+          <Property Type="String" Name="TenHH" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KG" Nullable="false" />
+          <Property Type="Binary" Name="Img" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="SL" Nullable="false" />
+          <Property Type="Int32" Name="MaLHH" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GiaoHangModelStoreContainer" CdmEntityContainer="GiaoHangEntities">
+          <EntitySetMapping Name="HangHoas">
+            <EntityTypeMapping TypeName="GiaoHangModel.HangHoa">
+              <MappingFragment StoreEntitySet="HangHoa">
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+                <ScalarProperty Name="KG" ColumnName="KG" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiHHs">
+            <EntityTypeMapping TypeName="GiaoHangModel.LoaiHH">
+              <MappingFragment StoreEntitySet="LoaiHH">
+                <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+                <ScalarProperty Name="TenLHH" ColumnName="TenLHH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getNameHangHoa" FunctionName="GiaoHangModel.Store.getNameHangHoa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiaoHangModel.getNameHangHoa_Result">
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+                <ScalarProperty Name="KG" ColumnName="KG" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GiaoHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HangHoa">
+    <Key>
+      <PropertyRef Name="MaHH" />
+    </Key>
+    <Property Name="MaHH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenHH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KG" Type="int" Nullable="false" />
+    <Property Name="Img" Type="image" />
+    <Property Name="SL" Type="int" Nullable="false" />
+    <Property Name="MaLHH" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiHH">
+    <Key>
+      <PropertyRef Name="MaLHH" />
+    </Key>
+    <Property Name="MaLHH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLHH" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__HangHoa__MaLHH__2C3393D0">
+    <End Role="LoaiHH" Type="Self.LoaiHH" Multiplicity="1" />
+    <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiHH">
+        <PropertyRef Name="MaLHH" />
+      </Principal>
+      <Dependent Role="HangHoa">
+        <PropertyRef Name="MaLHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="getNameHangHoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenHH" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="GiaoHangModelStoreContainer">
+    <EntitySet Name="HangHoa" EntityType="Self.HangHoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiHH" EntityType="Self.LoaiHH" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__HangHoa__MaLHH__2C3393D0" Association="Self.FK__HangHoa__MaLHH__2C3393D0">
+      <End Role="LoaiHH" EntitySet="LoaiHH" />
+      <End Role="HangHoa" EntitySet="HangHoa" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

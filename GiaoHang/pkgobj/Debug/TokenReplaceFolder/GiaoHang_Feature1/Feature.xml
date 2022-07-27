@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="cfec28fb-1495-432f-adf9-993191188935" Scope="Site" Title="GiaoHang Feature1">
+  <ElementManifests>
+    <ElementManifest Location="VisualWebPart1\Elements.xml" />
+    <ElementFile Location="VisualWebPart1\VisualWebPart1.webpart" />
+    <ElementManifest Location="Create_HangHoa\Elements.xml" />
+    <ElementFile Location="Create_HangHoa\Create_HangHoa.webpart" />
+    <ElementManifest Location="Table_HangHoa\Elements.xml" />
+    <ElementFile Location="Table_HangHoa\Table_HangHoa.webpart" />
+  </ElementManifests>
+</Feature>

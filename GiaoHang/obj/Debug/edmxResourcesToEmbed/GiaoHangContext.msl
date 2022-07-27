@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GiaoHangModelStoreContainer" CdmEntityContainer="GiaoHangEntities">
+    <EntitySetMapping Name="HangHoas">
+      <EntityTypeMapping TypeName="GiaoHangModel.HangHoa">
+        <MappingFragment StoreEntitySet="HangHoa">
+          <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+          <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+          <ScalarProperty Name="KG" ColumnName="KG" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiHHs">
+      <EntityTypeMapping TypeName="GiaoHangModel.LoaiHH">
+        <MappingFragment StoreEntitySet="LoaiHH">
+          <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+          <ScalarProperty Name="TenLHH" ColumnName="TenLHH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getNameHangHoa" FunctionName="GiaoHangModel.Store.getNameHangHoa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GiaoHangModel.getNameHangHoa_Result">
+          <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+          <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+          <ScalarProperty Name="KG" ColumnName="KG" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="MaLHH" ColumnName="MaLHH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
